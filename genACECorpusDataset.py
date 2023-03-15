@@ -227,7 +227,10 @@ def genACECorpusDataset(params):
                     #str2double because it is saved as a silly string by mistake
                     # a = T60DRRData["freqBand"]
                     # b = a[rowIndex]
+                    print("T60DRRData:",T60DRRData)
+
                     results["freqBand"] = T60DRRData["freqBand"][rowIndex]# 11
+                    print("freqBand:",results["freqBand"],"rowindex:",rowIndex) 
                     results["centreFreq"] = T60DRRData["centreFreq"][rowIndex]#12
                     results["DRR"] = T60DRRData["DRR"][rowIndex]# 14
                     results["DRRMean"] = T60DRRData["DRRMean"][rowIndex]#15

@@ -20,9 +20,9 @@ import argparse
 '''
 
 parser = argparse.ArgumentParser(description='load these files')
-parser.add_argument('--CORPUS_INPUT_FOLDER_ROOT', default='/data2/new_wzd/36_room_new_val/', type=str,help='load rir root')
-parser.add_argument('--CORPUS_OUTPUT_FOLDER_ROOT', default='/data2/new_wzd/20230313_rubbish/', type=str)
-parser.add_argument('--T60DRRresultsFile', default='/data2/new_wzd/36_room_val_code/02_06_val_data.csv', type=str)
+parser.add_argument('--CORPUS_INPUT_FOLDER_ROOT', default='/data2/queenie_2023/GenWav/add_without_zky_0316/', type=str,help='load rir root')
+parser.add_argument('--CORPUS_OUTPUT_FOLDER_ROOT', default='/data2/queenie_2023_gen_without_zky/', type=str)
+parser.add_argument('--T60DRRresultsFile', default='/data2/queenie_2023/GenWav/process_chart/extra_add_without_zky.csv', type=str)
 #为了加速训练，必需按照config分开才行
 parser.add_argument('--need_config', default='arthur-sykes-rymer-auditorium-university-york', type=str)
 parser.add_argument('--MIC_CONFIGs', default="arthur-sykes-rymer-auditorium-university-york", type=str)

@@ -1,3 +1,9 @@
+.split.py.swp
+*.rar
+add_without_zky_0316/
+*.log
+*.csv.bk
+
 *.xls
 *.csv
 *.xlsx

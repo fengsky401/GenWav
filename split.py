@@ -72,7 +72,7 @@ def excel_to_csv(file):
                     info.append(config)
                     info.append("IR")
                     info.append(room)
-                    info.append("NAN")
+                    #info.append("NAN")
                     info.append(fre_band)  # 表示第几个频段，它没有30个频段，所有应该设置为0
                     info.append(0)  # 中心频段设置为0
                     info.append(channel)
@@ -112,14 +112,14 @@ def excel_to_csv(file):
 
 
 
-parser.add_argument("--xls_file",default="/Users/queenie/Documents/Yousonic/T60/36_room_val_code/process_chart/extra_add_without_zky.xlsx",type=str)
+parser.add_argument("--xls_file",default="./process_chart/extra_add_without_zky.xlsx",type=str)
 #parser.add_argument("--csv_file",default="/data2/new_wzd/36_room_val_code/02_06_val_data.csv",type=str)
 parser.add_argument("--split_key",default="T60 AHM:",type=str)
 parser.add_argument("--freq_num",default="14",type=str)  #11对应250Hz,14对应500hz,
 
 parser.add_argument("--split_internal",default=0.1,type=float)
 parser.add_argument('--rir_dir',default="./Openair",type=str)
-parser.add_argument("--output_dir",default="./test_output_dir",type=str)
+parser.add_argument("--output_dir",default="./add_without_zky_0316",type=str)
 parser.add_argument("--gen_convwav_shell",default='./conv_wav.sh',type = str)
 # parser.add_argument("--nohup_convwav_shell",default='/data2/new_wzd/36_room_val_code/nohup_conv_wav.sh',type = str)
 
@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
         data_dict = {}
         for row in f_csv:
-            if str(row[11])  == args.freq_num:
+            if str(row[10])  == args.freq_num:
                 key = round(float(row[key_index]),1)
                 value = row
                 if not key in data_dict.keys():

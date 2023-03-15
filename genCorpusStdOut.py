@@ -80,7 +80,7 @@ def genCorpusStdOut(results, params):
     #     results["T60FullbandMean"],                #16
     #     results["fileName"]               #17
     # ]
-
+    print("freqBand:",results["freqBand"])
     res_list = [
         "%d" %(results["testID"]),
         "%d" %(VERSION),
