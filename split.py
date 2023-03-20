@@ -144,7 +144,7 @@ if __name__ == "__main__":
     remove_lst = []
     nohup_lst = []
 
-    shell_file = open(args.gen_convwav_shell, 'a')
+    shell_file = open(args.gen_convwav_shell, 'r')
 
     # shell_file = open(csv_file, 'a')
 
@@ -185,6 +185,7 @@ if __name__ == "__main__":
             for value in values:
                 scene_name = value[7]
                 room_name = value[3]
+                # config_name = value[8]
                 src_path = os.path.join(args.rir_dir,scene_name,room_name + ".wav")
                 scene_dir = os.path.join(save_dir,scene_name)
                 if not os.path.exists(scene_dir):

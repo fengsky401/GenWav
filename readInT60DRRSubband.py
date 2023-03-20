@@ -24,7 +24,7 @@ def readInT60DRRSubband(csv_file):
     results["srcPos"] = resultsScan[:,7]
 
     # 为啥要用去除空格
-    results["config"]= np.array([resultsScan[:,8][i].replace(" ","") for i in range(len(resultsScan[:,8]))])
+    results["config"]= np.array([resultsScan[:,7][i].replace(" ","") for i in range(len(resultsScan[:,7]))])
 
     results["recType"] = resultsScan[:,9]
 
@@ -35,7 +35,7 @@ def readInT60DRRSubband(csv_file):
     results["centreFreq"] = resultsScan[:,12]
 
     results["channel"] = resultsScan[:,13]
-    # results["channel"] = results["channel"].astype(np.int)
+    results["channel"] = results["channel"].astype(np.float32)
 
     results["DRR"] = resultsScan[:,14]
 
