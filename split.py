@@ -24,6 +24,14 @@ def excel_to_csv(file):
                 "FB T60 AHM:", "FB T30 ISO:", "FB T20 ISO:", "FB T60 AHM Mean (Ch):", "FB T30 ISO Mean (Ch):",
                 "FB T20 ISO Mean (Ch):",
                 "DRR direct +:", "DRR direct -:"]
+    # headLine = ["Test ID:", "Ver:", "fs:", "Room:",  "Session ID:", "Mic Pos:",
+    #             "Source Pos:", "Config:", "Rec Type:", "RIR:", "Freq band:", "Centre freq:",
+    #             "Channel:", "DRR:", "DRR Mean (Ch):", "T60 AHM:", "T30 ISO:", "T20 ISO:",
+    #             "T60 AHM Mean (Ch):", "T30 ISO Mean (Ch):", "T20 ISO Mean (Ch):", "ISO AHM Ints:", "FB DRR :",
+    #             "FB DRR Mean (Ch):",
+    #             "FB T60 AHM:", "FB T30 ISO:", "FB T20 ISO:", "FB T60 AHM Mean (Ch):", "FB T30 ISO Mean (Ch):",
+    #             "FB T20 ISO Mean (Ch):",
+    #             "DRR direct +:", "DRR direct -:"]
 
     csv_writer.writerow(headLine)
 
@@ -72,7 +80,7 @@ def excel_to_csv(file):
                     info.append(config)
                     info.append("IR")
                     info.append(room)
-                    #info.append("NAN")
+                    info.append("NAN")
                     info.append(fre_band)  # 表示第几个频段，它没有30个频段，所有应该设置为0
                     info.append(0)  # 中心频段设置为0
                     info.append(channel)
@@ -152,7 +160,7 @@ if __name__ == "__main__":
 
         data_dict = {}
         for row in f_csv:
-            if str(row[10])  == args.freq_num:
+            if str(row[11])  == args.freq_num:
                 key = round(float(row[key_index]),1)
                 value = row
                 if not key in data_dict.keys():
@@ -185,7 +193,7 @@ if __name__ == "__main__":
                 dst_path = os.path.join(save_dir,scene_name,room_name + ".wav")
                 shutil.copy(src_path,dst_path)
                 shell_str = "python main.py --CORPUS_INPUT_FOLDER_ROOT %s --CORPUS_OUTPUT_FOLDER_ROOT %s  --need_config %s --MIC_CONFIGs %s\n" % (
-                args.rir_dir, args.output_dir,scene_name,scene_name)
+                save_dir, args.output_dir,scene_name,scene_name)
                 remove_lst.append(shell_str)
 
     temp_lists = list(set(remove_lst))

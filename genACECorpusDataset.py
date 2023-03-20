@@ -131,9 +131,6 @@ def genACECorpusDataset(params):
             else:
 
                 _, params.nChannels = h.shape
-
-
-
             #-------------------------------------------------------这里插入噪音信号-----------------------------------------------------
             dict_noise = {}
             # path = "/data2/TEAM/Noise_TUT/TUT-acoustic-scenes-2017-development/evaluation_setup"
