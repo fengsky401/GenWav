@@ -126,7 +126,7 @@ parser.add_argument("--split_key",default="T60 AHM:",type=str)
 parser.add_argument("--freq_num",default="14",type=str)  #11对应250Hz,14对应500hz,
 
 parser.add_argument("--split_internal",default=0.1,type=float)
-parser.add_argument('--rir_dir',default="./Openair",type=str)
+parser.add_argument('--rir_dir',default="/data2/TEAM/AIR_dataset/Openair",type=str)
 parser.add_argument("--output_dir",default="./add_without_zky_0316",type=str)
 parser.add_argument("--gen_convwav_shell",default='./conv_wav.sh',type = str)
 # parser.add_argument("--nohup_convwav_shell",default='/data2/new_wzd/36_room_val_code/nohup_conv_wav.sh',type = str)
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     remove_lst = []
     nohup_lst = []
 
-    shell_file = open(args.gen_convwav_shell, 'r')
+    shell_file = open(args.gen_convwav_shell, 'w')
 
     # shell_file = open(csv_file, 'a')
 
