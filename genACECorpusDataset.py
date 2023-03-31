@@ -214,11 +214,26 @@ def genACECorpusDataset(params):
                     #            strcmp(T60DRRData.config, params.micConfigGT) &\
                     #            strcmp(T60DRRData.freqBand, num2str(freqBandInd))
                     judge1 = T60DRRData["channel"]==np.array([channelGT])
+
                     judge2 = T60DRRData["room"]==np.array(params.Room)
                     judge3 = np.array([T60DRRData["config"][i]==params.micConfigGT for i in range(len(T60DRRData["config"]))])#T60DRRData["config"]== np.array(params.micConfigGT)
-                    judge4 = T60DRRData["freqBand"]== np.array([freqBandInd+1])
+                    judge4 = T60DRRData["freqBand"] == np.array([freqBandInd+1])
 
                     rowIndex = judge1 & judge3 & judge4 & judge2
+
+                    if sum(rowIndex) == 0:
+                        print("HEAT")
+                        if sum(judge1) == 0:
+                            print("HEAT judge1")
+                        if sum(judge2) ==0 :
+                            print("HEAT judge2")
+                        if sum(judge3) == 0:
+                            print("HEAT judge3")
+                        if sum(judge4) == 0:
+                            print("HEAT judge4")
+                        continue
+                    else:
+                        print("PASS")
                     #results.testID already assigned
                     results["channel"] = chanInd
                     #str2double because it is saved as a silly string by mistake
@@ -227,7 +242,9 @@ def genACECorpusDataset(params):
                     print("T60DRRData:",T60DRRData)
 
                     results["freqBand"] = T60DRRData["freqBand"][rowIndex]# 11
-                    print("freqBand:",results["freqBand"],"rowindex:",rowIndex) 
+                    print("freqBand:",results["freqBand"],"rowindex:",rowIndex)
+
+
                     results["centreFreq"] = T60DRRData["centreFreq"][rowIndex]#12
                     results["DRR"] = T60DRRData["DRR"][rowIndex]# 14
                     results["DRRMean"] = T60DRRData["DRRMean"][rowIndex]#15

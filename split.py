@@ -120,15 +120,15 @@ def excel_to_csv(file):
 
 
 
-parser.add_argument("--xls_file",default="./process_chart/extra_add_without_zky.xlsx",type=str)
+parser.add_argument("--xls_file",default="./process_chart/extra_add_with_zky.xlsx",type=str)
 #parser.add_argument("--csv_file",default="/data2/new_wzd/36_room_val_code/02_06_val_data.csv",type=str)
 parser.add_argument("--split_key",default="T60 AHM:",type=str)
 parser.add_argument("--freq_num",default="14",type=str)  #11对应250Hz,14对应500hz,
 
 parser.add_argument("--split_internal",default=0.1,type=float)
-parser.add_argument('--rir_dir',default="./Openair",type=str)
-parser.add_argument("--output_dir",default="./add_without_zky_0316",type=str)
-parser.add_argument("--gen_convwav_shell",default='./conv_wav.sh',type = str)
+parser.add_argument('--rir_dir',default="./ZKY",type=str)
+parser.add_argument("--output_dir",default="./add_with_zky_0316",type=str)
+parser.add_argument("--gen_convwav_shell",default='./conv_zky_0316.sh',type = str)
 # parser.add_argument("--nohup_convwav_shell",default='/data2/new_wzd/36_room_val_code/nohup_conv_wav.sh',type = str)
 
 
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     remove_lst = []
     nohup_lst = []
 
-    shell_file = open(args.gen_convwav_shell, 'r')
+    shell_file = open(args.gen_convwav_shell, 'w')
 
     # shell_file = open(csv_file, 'a')
 
@@ -174,6 +174,8 @@ if __name__ == "__main__":
         max_key = max(data_dict.keys())
         c = 0
         for key in np.arange(min_key,max_key,round(args.split_internal,1)):
+            if not key in data_dict.keys():
+                continue
             key = round(key,1)
             save_dir = os.path.join(args.output_dir,"split_%s" %(str(key).replace(".","_")))
             conv_wav_dir = os.path.join(args.output_dir,"split_%d_conv_wav" %(c))
